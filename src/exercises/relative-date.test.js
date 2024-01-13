@@ -28,14 +28,23 @@ describe('Calculate Relative Date', () => {
   });
 
   /*
-    skipping the test for this year since current date falls in January,
+    skipping the following two tests for this year and last month since current date falls in January,
     previous month would be in December the previous year. 
-    Expected Response doesn't include the case: 'Last Month: year = current year - 1, month = current month -1'
+    Expected Response doesn't include the cases: 
+    'Last Month: year = current year - 1, month = current month -1'
+
   */
 
+    it.skip('Last Month', () => {
+      const input  = new Date('2024-12-01');
+      const expected = 'Last month: same year, month = current month - 1';
+      const actual = calculateRelativeDate(input);
+      expect(actual).to.equal(expected);
+    });
+
   it.skip('This Year', () => {
-    const input  = new Date('2023-12-01');
-    const expected = 'This month: same year, same month, date < today - 7';
+    const input  = new Date('2024-01-01');
+    const expected = 'This year: same year';
     const actual = calculateRelativeDate(input);
     expect(actual).to.equal(expected);
   });
