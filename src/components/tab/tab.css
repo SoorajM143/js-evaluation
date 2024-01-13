@@ -9,3 +9,16 @@
 .c-tab--content > .c-tab--active {
     display: block;
 }
+
+.c-numeric-input--error{
+    border: 2px solid red;
+}
+
+.c-numeric-input--valid{
+    border: 2px solid green;
+}
+
+.c-numeric-input__error-msg {
+    padding-left: 10px;
+    color: red;
+}

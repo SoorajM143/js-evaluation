@@ -19,9 +19,43 @@
 * */
 
 const NumericInput = {
+  onFocusOut: (e) => {
+    //checking for empty string,if not an empty string converting it to number
+   var val = e.target.value === "" ? "" : +e.target.value;
+
+   if(!isNaN(val) && val !== ""){
+    e.target.value = val;
+    document.querySelectorAll('.c-numeric-input').forEach(elem => {
+      elem.classList.add('c-numeric-input--valid');
+      elem.classList.remove('c-numeric-input--error');
+    });
+    document.querySelector('.c-numeric-input__error-msg').remove();
+   }
+   else if(isNaN(val)){
+    document.querySelectorAll('.c-numeric-input').forEach(elem => {
+      elem.classList.add('c-numeric-input--error');
+      elem.classList.remove('c-numeric-input--valid');
+      const p = document.createElement("span");
+      const node = document.createTextNode("Invalid Input");
+      p.appendChild(node);
+      elem.insertAdjacentElement("afterend",p);
+      p.classList.add('c-numeric-input__error-msg')
+    });
+   }
+   else{
+    document.querySelectorAll('.c-numeric-input').forEach(elem => {
+      elem.classList.remove('c-numeric-input--error');
+      elem.classList.remove('c-numeric-input--valid');
+
+    });
+    document.querySelector('.c-numeric-input__error-msg').remove();
+   }
+
+  },
   init: () => {
     document.querySelectorAll('.c-numeric-input').forEach(elem => {
-      console.log('TODO: Please see the above requirement for numeric input');
+      elem.addEventListener('focus', NumericInput.onFormFocus); 
+      elem.addEventListener("focusout", NumericInput.onFocusOut);
     });
   }
 };
