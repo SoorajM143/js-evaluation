@@ -4,25 +4,25 @@ import { expect } from '@open-wc/testing';
 describe('Calculate Relative Date', () => {
   it('Today', () => {
     const input  = new Date('2024-01-13');
-    const expected = 'Today: same year, same month, same date';
+    const expected = 'Today';
     const actual = calculateRelativeDate(input);
     expect(actual).to.equal(expected);
   });
   it('Yesterday', () => {
     const input  = new Date('2024-01-12');
-    const expected = 'Yesterday: same year, same month, date = today - 1';
+    const expected = 'Yesterday';
     const actual = calculateRelativeDate(input);
     expect(actual).to.equal(expected);
   });
   it('This week', () => {
     const input  = new Date('2024-01-09');
-    const expected = 'This week: same year, same month, today - 7 < date < today - 1';
+    const expected = 'This week';
     const actual = calculateRelativeDate(input);
     expect(actual).to.equal(expected);
   });
   it('This Month', () => {
     const input  = new Date('2024-01-01');
-    const expected = 'This month: same year, same month, date < today - 7';
+    const expected = 'This month';
     const actual = calculateRelativeDate(input);
     expect(actual).to.equal(expected);
   });
@@ -37,14 +37,14 @@ describe('Calculate Relative Date', () => {
 
     it.skip('Last Month', () => {
       const input  = new Date('2024-12-01');
-      const expected = 'Last month: same year, month = current month - 1';
+      const expected = 'Last month';
       const actual = calculateRelativeDate(input);
       expect(actual).to.equal(expected);
     });
 
   it.skip('This Year', () => {
     const input  = new Date('2024-01-01');
-    const expected = 'This year: same year';
+    const expected = 'This year';
     const actual = calculateRelativeDate(input);
     expect(actual).to.equal(expected);
   });
@@ -53,14 +53,14 @@ describe('Calculate Relative Date', () => {
 
   it('Last Year', () => {
     const input  = new Date('2023-12-11');
-    const expected = 'Last year: year = current year - 1';
+    const expected = 'Last year';
     const actual = calculateRelativeDate(input);
     expect(actual).to.equal(expected);
   });
 
   it('Long time ago', () => {
     const input  = new Date('2022-12-11');
-    const expected = 'Long time ago: everything else';
+    const expected = 'Long time ago';
     const actual = calculateRelativeDate(input);
     expect(actual).to.equal(expected);
   });
